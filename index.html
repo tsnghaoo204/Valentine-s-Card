@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Valentine’s Day 💘</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #ffdde1, #ff80ab);
+            color: #ff4081;
+            text-align: center;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .container {
+            max-width: 90%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ff80ab, 0 0 20px #ff4081;
+            }
+            to {
+                text-shadow: 0 0 20px #ff4081, 0 0 30px #d500f9;
+            }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #ff4081, #d500f9);
+            color: white;
+            font-size: 1.2em;
+            padding: 15px 25px;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-top: 20px;
+            text-transform: uppercase;
+        }
+
+        .btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .hearts {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff4081;
+            font-size: 20px;
+            animation: float 5s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100vh) scale(0.5); opacity: 0; }
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .popup h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .popup p {
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .btn {
+                font-size: 1em;
+                padding: 12px 20px;
+            }
+
+            .popup {
+                max-width: 90%;
+                padding: 20px;
+            }
+
+            .popup h2 {
+                font-size: 1.5em;
+                margin-bottom: 10px;
+            }
+
+            .popup p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💘 Xin chào em bé của anh Hàoo! 💖</h1>
+        <button class="btn" onclick="showLove()">Em bé nhấn vào đây dii 💌</button>
+    </div>
+
+    <div class="hearts"></div>
+
+    <div class="popup" id="popup">
+        <h2>💞 Bất ngờ chưaa! 💞</h2>
+        <p>Anh làm những thứ này chỉ với một mục đích! Anh chỉ muốn chứng minh tình yêu của anh dành cho em là vô hạn. Xin lỗi em bé vì thời gian vừa qua đã gây cho em nhiều tổn thương và thiệt thòi. Anh rất yêu em! Mãi là em bé của anh nhóoo <br>Chúc em bé có một ngày Valentine thật là vui vẻ và hạnh phúc ❤️</p>
+        <button class="btn" onclick="hidePopup()">Đóng</button>
+    </div>
+
+    <script>
+        function showLove() {
+            document.getElementById('popup').style.display = 'block';
+        }
+
+        function hidePopup() {
+            document.getElementById('popup').style.display = 'none';
+        }
+
+        function createHearts() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = 'Mãi iu wynziao của anhh <3';
+            heart.style.left = Math.random() * 70 + 'vw';
+            heart.style.top = '100vh';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            document.querySelector('.hearts').appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 5000);
+        }
+
+        setInterval(createHearts, 1000);
+    </script>
+</body>
+</html>
